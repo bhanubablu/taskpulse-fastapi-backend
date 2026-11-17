@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    container_name: taskpulse-api
+    ports:
+      - "8000:8000"
+    environment:
+      - SECRET_KEY=bhanu_production_jwt_secret_key_2026
+      - DATABASE_URL=sqlite:///./taskpulse.db
+    volumes:
+      - ./taskpulse.db:/app/taskpulse.db
+    restart: unless-stopped
